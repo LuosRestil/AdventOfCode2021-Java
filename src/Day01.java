@@ -88,12 +88,14 @@ Your puzzle answer was 1486.
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Day01 {
     public static void main(String[] args) throws FileNotFoundException {
+        // Part 1
         Scanner s = new Scanner(new File("src/inputs/Day01.txt"));
-        ArrayList<Integer> depthReadings = new ArrayList<Integer>();
+        List<Integer> depthReadings = new ArrayList<Integer>();
         while (s.hasNextLine()){
             depthReadings.add(Integer.parseInt(s.nextLine()));
         }
@@ -108,6 +110,7 @@ public class Day01 {
 
         System.out.println("Answer1: " + increases);
 
+        // Part 2
         increases = 0;
         int prevSum = depthReadings.subList(0, 3).stream().reduce(0, Integer::sum);
 
