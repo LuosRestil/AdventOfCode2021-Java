@@ -84,7 +84,7 @@ public class Day04 {
     public static void main(String[] args) throws FileNotFoundException {
         // Part 1
         Scanner scanner = new Scanner(new File("src/inputs/Day04.txt"));
-        List<String> data = new ArrayList<String>();
+        List<String> data = new ArrayList<>();
         while (scanner.hasNextLine()){
             data.add(scanner.nextLine());
         }
