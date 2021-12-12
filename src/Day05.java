@@ -81,7 +81,7 @@ import java.util.Scanner;
 public class Day05 {
     public static void main(String[] args) throws FileNotFoundException {
         // Part 1
-        Scanner scanner = new Scanner(new File("src/inputs/Day05.txt"));
+        Scanner scanner = new Scanner(new File("src/inputs/Day06.txt"));
         List<String> data = new ArrayList<>();
         while (scanner.hasNextLine()) {
             data.add(scanner.nextLine());
