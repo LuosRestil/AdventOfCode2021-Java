@@ -35,24 +35,30 @@ public class Day12 {
         for (List<String> path : paths) {
             if (path.get(path.size() - 1).equals("end")) {
                 totalPaths++;
-                System.out.println(path.toString());
             }
         }
-        System.out.println("total paths: " + totalPaths);
-
+        System.out.println("Answer: " + totalPaths);
     }
 
     public static List<List<String>> explore(Map<String, List<String>> caveMap, String location, List<String> pathSoFar) {
         List<String> pathSoFarCopy = new ArrayList<>(pathSoFar);
         pathSoFarCopy.add(location);
-        // ...cave
+
         List<List<String>> paths = new ArrayList<>();
         paths.add(pathSoFarCopy);
 
         if (!location.equals("end")) {
             for (String cave : caveMap.get(location)) {
-                if (!(isSmallCave(cave) && pathSoFarCopy.contains(cave))) {
-                    paths.addAll(explore(caveMap, cave, pathSoFarCopy));
+//                // Pt. 1
+//                if (!(isSmallCave(cave) && pathSoFarCopy.contains(cave))) {
+//                    paths.addAll(explore(caveMap, cave, pathSoFarCopy));
+//                }
+
+                // Pt. 2
+                if (!(isSmallCave(cave) && pathSoFarCopy.contains(cave) && hasVisitedSmallCaveTwice(pathSoFarCopy))) {
+                    if (!cave.equals("start")) {
+                        paths.addAll(explore(caveMap, cave, pathSoFarCopy));
+                    }
                 }
             }
         }
@@ -63,5 +69,22 @@ public class Day12 {
     public static boolean isSmallCave(String cave) {
         char firstChar = cave.charAt(0);
         return (int) firstChar >= 97 && (int) firstChar <= 122;
+    }
+
+    public static boolean hasVisitedSmallCaveTwice(List<String> path) {
+        Map<String, Integer> freqMap = new HashMap<>();
+        for (String cave : path) {
+            if (freqMap.containsKey(cave)) {
+                freqMap.put(cave, freqMap.get(cave) + 1);
+            } else {
+                freqMap.put(cave, 1);
+            }
+        }
+        for (Map.Entry<String, Integer> entry : freqMap.entrySet()) {
+            if (entry.getValue() > 1 && isSmallCave(entry.getKey())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
