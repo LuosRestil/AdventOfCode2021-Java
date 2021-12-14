@@ -169,6 +169,7 @@ public class Day13 {
 //        for (String[] instruction : instructions.subList(0, 1)) {
         // Pt. 2
         for (String[] instruction : instructions) {
+
             int subtractionFactor = 2;
 
             if (instruction[0].equals("x")) {
