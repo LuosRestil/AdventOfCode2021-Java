@@ -104,7 +104,6 @@ public class Day14 {
             }
         }
 
-
         for (int i = 0; i < iterations - 1; i++) {
             for (Map.Entry<String, Long> entry : freqMap.entrySet()) {
                 String oldPair = entry.getKey();
